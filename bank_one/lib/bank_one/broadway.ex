@@ -10,7 +10,7 @@ defmodule BankOne.Broadway do
         module:
           {BroadwayKafka.Producer,
            [
-             hosts: [localhost: 9092],
+             hosts: [localhost: 9093],
              group_id: "bank_one",
              topics: ["bank_two-transfer"]
            ]},
@@ -23,7 +23,7 @@ defmodule BankOne.Broadway do
       ],
       batchers: [
         default: [
-          batch_size: 100,
+          batch_size: 1000,
           batch_timeout: 200,
           concurrency: 10
         ]
