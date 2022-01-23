@@ -6,10 +6,11 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :bank_one, BankOne.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "bank_one",
+  password: "bank_one",
   hostname: "localhost",
-  database: "bank_one_test#{System.get_env("MIX_TEST_PARTITION")}",
+  port: 5432,
+  database: "bank_one_db#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 

@@ -2,10 +2,11 @@ import Config
 
 # Configure your database
 config :bank_one, BankOne.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "bank_one",
+  password: "bank_one",
   hostname: "localhost",
-  database: "bank_one_dev",
+  port: 5432,
+  database: "bank_one_db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

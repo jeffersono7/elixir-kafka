@@ -15,9 +15,10 @@ defmodule BankOne.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: BankOne.PubSub},
       # Start the Endpoint (http/https)
-      BankOneWeb.Endpoint
+      BankOneWeb.Endpoint,
       # Start a worker by calling: BankOne.Worker.start_link(arg)
       # {BankOne.Worker, arg}
+      {BankOne.Broadway, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
