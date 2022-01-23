@@ -44,7 +44,7 @@ services:
       - zookeeper
   kowl:
     container_name: kowl
-    image: qualy.io/cloudhut/kowl:master
+    image: quay.io/cloudhut/kowl:master
     environment:
       - KAFKA_BROKERS=kafka:9092
     ports:
