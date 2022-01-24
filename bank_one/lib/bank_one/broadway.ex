@@ -12,20 +12,20 @@ defmodule BankOne.Broadway do
            [
              hosts: [localhost: 9093],
              group_id: "bank_one",
-             topics: ["bank_two-transfer"]
+             topics: ["bank_one-transfer"]
            ]},
-        concurrency: 1
+        concurrency: 50
       ],
       processors: [
         default: [
-          concurrency: 10
+          concurrency: 200
         ]
       ],
       batchers: [
         default: [
-          batch_size: 1000,
-          batch_timeout: 200,
-          concurrency: 10
+          batch_size: 3000,
+          batch_timeout: 1000,
+          concurrency: 200
         ]
       ]
     )
@@ -34,7 +34,11 @@ defmodule BankOne.Broadway do
   @impl true
   def handle_message(_, message, _) do
     message
-    |> Message.update_data(fn data -> {data, String.to_integer(data) * 2} end)
+    |> Message.update_data(fn data ->
+      {:ok, transfer} = Jason.decode(data)
+
+      {data, BankOne.receive_transfer(transfer)}
+    end)
   end
 
   @impl true
