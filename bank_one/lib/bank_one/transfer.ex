@@ -2,6 +2,8 @@ defmodule BankOne.Transfer do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:id, :amount, :payee_account, :account_id]}
+
   schema "transfers" do
     field :amount, :decimal
     field :payee_account, :integer

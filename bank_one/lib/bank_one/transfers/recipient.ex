@@ -10,8 +10,9 @@ defmodule BankOne.Transfers.Recipient do
     Enum.with_index(transfers, 1)
     |> Enum.each(fn {transfer, index} ->
       partition = rem(index, @partitions)
+      {:ok, json} = Jason.encode(transfer)
 
-      :brod.produce(:bank_one, @topic, partition, "", transfer)
+      :brod.produce(:bank_one, @topic, partition, "", json)
     end)
 
     :ok
