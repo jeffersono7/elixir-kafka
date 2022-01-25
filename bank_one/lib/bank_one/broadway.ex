@@ -18,7 +18,7 @@ defmodule BankOne.Broadway do
       ],
       processors: [
         default: [
-          concurrency: 200
+          concurrency: 500
         ]
       ],
       batchers: [
@@ -43,9 +43,7 @@ defmodule BankOne.Broadway do
 
   @impl true
   def handle_batch(_, messages, _, _) do
-    list = messages |> Enum.map(fn e -> e.data end)
-
-    IO.inspect(list, label: "Got batch")
+    _list = messages |> Enum.map(fn e -> e.data end)
 
     messages
   end

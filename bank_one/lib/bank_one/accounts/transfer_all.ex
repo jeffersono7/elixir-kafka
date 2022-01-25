@@ -43,6 +43,5 @@ defmodule BankOne.Accounts.TransferAll do
         chunk
       )
     end)
-
   end
 end

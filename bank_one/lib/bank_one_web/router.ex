@@ -7,6 +7,8 @@ defmodule BankOneWeb.Router do
 
   scope "/api", BankOneWeb do
     pipe_through :api
+
+    post "/accounts/transfer_to_bank_two", TransferToBankTwoController, :create
   end
 
   # Enables LiveDashboard only for development

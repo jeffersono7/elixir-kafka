@@ -8,7 +8,8 @@ config :bank_one, BankOne.Repo,
   port: 5432,
   database: "bank_one_db",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 100,
+  queue_target: 5000
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
