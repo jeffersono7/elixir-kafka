@@ -1,4 +1,4 @@
-defmodule BankOne.Broadway do
+defmodule BankTwo.Broadway do
   use Broadway
 
   alias Broadway.Message
@@ -11,8 +11,8 @@ defmodule BankOne.Broadway do
           {BroadwayKafka.Producer,
            [
              hosts: [localhost: 9093],
-             group_id: "bank_one",
-             topics: ["bank_two-transfer"]
+             group_id: "bank_two",
+             topics: ["bank_one-transfer"]
            ]},
         concurrency: 50
       ],
@@ -37,7 +37,7 @@ defmodule BankOne.Broadway do
     |> Message.update_data(fn data ->
       {:ok, transfer} = Jason.decode(data)
 
-      {data, BankOne.receive_transfer(transfer)}
+      {data, BankTwo.receive_transfer(transfer)}
     end)
   end
 

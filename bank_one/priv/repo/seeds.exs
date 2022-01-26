@@ -1,5 +1,4 @@
 alias BankOne.Accounts.Create, as: CreateAccount
-alias BankOne.Accounts.Credit, as: CreditAccount
 # Script for populating the database. You can run it as:
 #
 #     mix run priv/repo/seeds.exs
@@ -21,7 +20,7 @@ create_account_async = fn i ->
   end)
 end
 
-Enum.chunk_every(1..200_000, 2_000)
+Enum.chunk_every(1..20_000, 2_000)
 |> Enum.map(fn chunk ->
   Enum.map(chunk, create_account_async)
   |> Enum.map(&Task.await/1)

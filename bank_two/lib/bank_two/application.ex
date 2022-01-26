@@ -15,9 +15,10 @@ defmodule BankTwo.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: BankTwo.PubSub},
       # Start the Endpoint (http/https)
-      BankTwoWeb.Endpoint
+      BankTwoWeb.Endpoint,
       # Start a worker by calling: BankTwo.Worker.start_link(arg)
       # {BankTwo.Worker, arg}
+      {BankTwo.Broadway, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
