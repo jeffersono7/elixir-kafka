@@ -8,7 +8,7 @@ defmodule BankTwoWeb.Router do
   scope "/api", BankTwoWeb do
     pipe_through :api
 
-    post "/accounts/transfer_to_bank_two", TransferToBankTwoController, :create
+    post "/accounts/transfer_to_bank_one", TransferToBankTwoController, :create
   end
 
   # Enables LiveDashboard only for development
