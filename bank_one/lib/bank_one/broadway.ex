@@ -25,7 +25,7 @@ defmodule BankOne.Broadway do
         default: [
           batch_size: 3000,
           batch_timeout: 1000,
-          concurrency: 200
+          concurrency: 100
         ]
       ]
     )
